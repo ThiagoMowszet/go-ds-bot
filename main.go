@@ -18,7 +18,7 @@ const prefix string = ".go"
 
 func main() {
 	// NOTE: default value: .env
-	godotenv.Load("env.dev")
+	godotenv.Load()
 
 	token := os.Getenv("BOT_TOKEN")
 	// log.Printf("The bot token is %s\n", token)
@@ -87,6 +87,13 @@ func main() {
 			// s.ChannelMessageSend(m.ChannelID, facts[selection])
 			s.ChannelMessageSendEmbed(m.ChannelID, &embed)
 		}
+
+		// Canales Discord
+		if args[1] == "canales" {
+			yt := "https://www.youtube.com/watch?v=wKo-M-wvCw4"
+			s.ChannelMessageSend(m.ChannelID, yt)
+		}
+
 
 	})
 
