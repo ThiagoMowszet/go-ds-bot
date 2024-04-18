@@ -1,23 +1,28 @@
 package main
 
 import (
-	"math/rand"
 	"fmt"
 	"log"
+	"math/rand"
 	"os"
 	"os/signal"
 	"strings"
 	"syscall"
 
 	ds "github.com/bwmarrin/discordgo"
+	"github.com/joho/godotenv"
 )
 
 // Prefix
 const prefix string = ".go"
 
 func main() {
-	// TODO: create a .env for the discord token
-	session, err := ds.New("Bot ")
+	// NOTE: default value: .env
+	godotenv.Load("env.dev")
+
+	token := os.Getenv("BOT_TOKEN")
+	// log.Printf("The bot token is %s\n", token)
+	session, err := ds.New("Bot " + token)
 
 	if err != nil {
 		log.Fatal(err)
